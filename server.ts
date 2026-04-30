@@ -183,7 +183,7 @@ restoreOverwrittenFilesWithOriginals().then(() => {
 
   /* Security middleware */
   app.use(helmet.noSniff())
-  app.use(helmet.frameguard())
+  app.use(helmet.frameguard({ action: 'deny' }))
   // app.use(helmet.xssFilter()); // = no protection from persisted XSS via RESTful API
   app.disable('x-powered-by')
   app.use(featurePolicy({
