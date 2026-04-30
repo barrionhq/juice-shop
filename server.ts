@@ -194,6 +194,7 @@ restoreOverwrittenFilesWithOriginals().then(() => {
 
   /* Hiring header */
   app.use((req: Request, res: Response, next: NextFunction) => {
+    res.removeHeader('Server')
     res.append('X-Recruiting', config.get('application.securityTxt.hiring'))
     next()
   })
