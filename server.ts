@@ -185,6 +185,17 @@ function configureApp (app: ReturnType<typeof express>, seq: typeof sequelize) {
   /* Security middleware */
   app.use(helmet.noSniff())
   app.use(helmet.frameguard())
+  app.use(helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-eval'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: ["'self'", 'data:'],
+      connectSrc: ["'self'"],
+      frameSrc: ["'self'"],
+      fontSrc: ["'self'", 'data:']
+    }
+  }))
   // app.use(helmet.xssFilter()); // = no protection from persisted XSS via RESTful API
   app.disable('x-powered-by')
   app.use(featurePolicy({
