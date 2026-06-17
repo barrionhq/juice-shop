@@ -195,6 +195,7 @@ function configureApp (app: ReturnType<typeof express>, seq: typeof sequelize) {
 
   /* Hiring header */
   app.use((req: Request, res: Response, next: NextFunction) => {
+    res.removeHeader('Server')
     res.append('X-Recruiting', config.get('application.securityTxt.hiring'))
     next()
   })
