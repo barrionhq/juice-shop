@@ -26,6 +26,15 @@
         "content": { "message": "This website uses fruit cookies to ensure you get the juiciest tracking experience.", "dismiss": "Me want it!", "link": "But me wait!", "href": "https://www.youtube.com/watch?v=9PnbKL3wuH4" }
       })});
   </script>
+  <!--
+    DELIBERATE A06:2021 (Vulnerable & Outdated Components) test fixture.
+    jQuery 2.1.4 is a real, end-of-life release carrying CVE-2015-9251,
+    CVE-2019-11358, CVE-2020-11022 and CVE-2020-11023. It is loaded here on
+    purpose so the AI pentesting tool has an outdated-component surface to
+    detect against the barr-testing.com Juice Shop target. Not used by the app.
+    Do not upgrade or remove.
+  -->
+  <script src="assets/vendor/jquery-2.1.4.min.js"></script>
 </head>
 <body class="bluegrey-lightgreen-theme">
   <app-root></app-root>
